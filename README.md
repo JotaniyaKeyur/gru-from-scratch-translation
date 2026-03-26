@@ -6,18 +6,16 @@ The goal of this project is **deep understanding of the math and training dynami
 
 ---
 
-## 🚀 Overview
+## Overview
 
 - Dataset: WMT14 Hindi-English (`hi-en`)
 - Model: Encoder–Decoder GRU (1-layer)
 - Implementation: Pure NumPy
 - Training: Manual forward + backward (BPTT)
-- Decoding: Beam Search (beam width = 2)
-- Evaluation: SacreBLEU
 
 ---
 
-## 📂 Pipeline
+## Pipeline
 
 ### 1. Dataset Loading
 dataset = load_dataset("wmt/wmt14", "hi-en")
@@ -83,38 +81,13 @@ Techniques:
 
 ---
 
-### 6. Inference
-
-- Autoregressive decoding
-- Beam Search (beam width = 2)
-
----
-
-### 7. Evaluation
-
-- Metric: SacreBLEU
-
----
-
-## 📊 Training Results
-
-Epoch 1: 25.10  
-Epoch 2: 21.83  
-Epoch 3: 19.42  
-Epoch 4: 17.87  
-Epoch 5: 15.86  
-Epoch 6: 14.22  
-Epoch 7: 12.17  
-
----
-
-## 📈 Evaluation Result
+## Evaluation Result
 
 SacreBLEU: ~2.7e-08
 
 ---
 
-## ⚠️ Notes
+## Notes
 
 - Small model capacity (hidden_dim = 100)
 - No attention mechanism
@@ -123,35 +96,6 @@ SacreBLEU: ~2.7e-08
 
 ---
 
-## 🧠 Key Learnings
-
-- Seq2Seq architecture from scratch
-- GRU math (forward & backward)
-- Backpropagation Through Time (BPTT)
-- Exposure bias (train vs inference gap)
-- Beam search decoding
-- Full training pipeline without frameworks
-
----
-
-## 💾 Model Files
-
-- model.safetensors
-- tokenizer.json
-- tokenizer_config.json
-
----
-
-## 🔮 Future Improvements
-
-- Add Attention mechanism
-- Increase model size
-- Use batching
-- Improve decoding strategy
-- Move to PyTorch
-
----
-
-## 📌 Conclusion
+## Conclusion
 
 This project demonstrates a complete seq2seq system built from scratch using NumPy, focusing on understanding the underlying mathematics and training behavior.
