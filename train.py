@@ -206,84 +206,84 @@ def train():
             ]:
                 np.clip(grad, -5.0, 5.0, out=grad)
 
-        # SGD + Momentum Update
-        vE = momentum * vE - lr * dE
-        E += vE
+            # SGD + Momentum Update
+            vE = momentum * vE - lr * dE
+            E += vE
+    
+            vWo = momentum * vWo - lr * dWo
+            Wo += vWo
+    
+            vbo = momentum * vbo - lr * dbo
+            bo += vbo
+    
+            vWzx_dec = momentum * vWzx_dec - lr * dWzx_dec
+            Wzx_dec += vWzx_dec
+    
+            vWzh_dec = momentum * vWzh_dec - lr * dWzh_dec
+            Wzh_dec += vWzh_dec
+    
+            vbz_dec = momentum * vbz_dec - lr * dbz_dec
+            bz_dec += vbz_dec
+    
+            vWrx_dec = momentum * vWrx_dec - lr * dWrx_dec
+            Wrx_dec += vWrx_dec
+    
+            vWrh_dec = momentum * vWrh_dec - lr * dWrh_dec
+            Wrh_dec += vWrh_dec
+    
+            vbr_dec = momentum * vbr_dec - lr * dbr_dec
+            br_dec += vbr_dec
 
-        vWo = momentum * vWo - lr * dWo
-        Wo += vWo
+            vWhx_dec = momentum * vWhx_dec - lr * dWhx_dec
+            Whx_dec += vWhx_dec
+    
+            vWhh_dec = momentum * vWhh_dec - lr * dWhh_dec
+            Whh_dec += vWhh_dec
+    
+            vbh_dec = momentum * vbh_dec - lr * dbh_dec
+            bh_dec += vbh_dec
+    
+            vWzx = momentum * vWzx - lr * dWzx
+            Wzx += vWzx
+    
+            vWzh = momentum * vWzh - lr * dWzh
+            Wzh += vWzh
+    
+            vbz = momentum * vbz - lr * dbz
+            bz += vbz
+    
+            vWrx = momentum * vWrx - lr * dWrx
+            Wrx += vWrx
+    
+            vWrh = momentum * vWrh - lr * dWrh
+            Wrh += vWrh
+    
+            vbr = momentum * vbr - lr * dbr
+            br += vbr
 
-        vbo = momentum * vbo - lr * dbo
-        bo += vbo
-
-        vWzx_dec = momentum * vWzx_dec - lr * dWzx_dec
-        Wzx_dec += vWzx_dec
-
-        vWzh_dec = momentum * vWzh_dec - lr * dWzh_dec
-        Wzh_dec += vWzh_dec
-
-        vbz_dec = momentum * vbz_dec - lr * dbz_dec
-        bz_dec += vbz_dec
-
-        vWrx_dec = momentum * vWrx_dec - lr * dWrx_dec
-        Wrx_dec += vWrx_dec
-
-        vWrh_dec = momentum * vWrh_dec - lr * dWrh_dec
-        Wrh_dec += vWrh_dec
-
-        vbr_dec = momentum * vbr_dec - lr * dbr_dec
-        br_dec += vbr_dec
-
-        vWhx_dec = momentum * vWhx_dec - lr * dWhx_dec
-        Whx_dec += vWhx_dec
-
-        vWhh_dec = momentum * vWhh_dec - lr * dWhh_dec
-        Whh_dec += vWhh_dec
-
-        vbh_dec = momentum * vbh_dec - lr * dbh_dec
-        bh_dec += vbh_dec
-
-        vWzx = momentum * vWzx - lr * dWzx
-        Wzx += vWzx
-
-        vWzh = momentum * vWzh - lr * dWzh
-        Wzh += vWzh
-
-        vbz = momentum * vbz - lr * dbz
-        bz += vbz
-
-        vWrx = momentum * vWrx - lr * dWrx
-        Wrx += vWrx
-
-        vWrh = momentum * vWrh - lr * dWrh
-        Wrh += vWrh
-
-        vbr = momentum * vbr - lr * dbr
-        br += vbr
-
-        vWhx = momentum * vWhx - lr * dWhx
-        Whx += vWhx
-
-        vWhh = momentum * vWhh - lr * dWhh
-        Whh += vWhh
-
-        vbh = momentum * vbh - lr * dbh
-        bh += vbh
-
-        epoch_loss += loss
-
-        pbar.set_postfix(
-            loss=f"{loss:.4f}",
-            avg_loss=f"{epoch_loss / processed_count:.4f}",
-            lr=f"{lr:.6f}"
-        )
-
-    avg_loss = epoch_loss / processed_count
-    print(f"epoch: {epoch + 1}, avg_loss: {avg_loss:.4f}, lr: {lr:.6f}")
-
-    if (epoch + 1) % step_size == 0:
-        lr = lr * gamma
-        print(f"Learning rate updated to: {lr:.6f}")
+            vWhx = momentum * vWhx - lr * dWhx
+            Whx += vWhx
+    
+            vWhh = momentum * vWhh - lr * dWhh
+            Whh += vWhh
+    
+            vbh = momentum * vbh - lr * dbh
+            bh += vbh
+    
+            epoch_loss += loss
+    
+            pbar.set_postfix(
+                loss=f"{loss:.4f}",
+                avg_loss=f"{epoch_loss / processed_count:.4f}",
+                lr=f"{lr:.6f}"
+            )
+    
+        avg_loss = epoch_loss / processed_count
+        print(f"epoch: {epoch + 1}, avg_loss: {avg_loss:.4f}, lr: {lr:.6f}")
+    
+        if (epoch + 1) % step_size == 0:
+            lr = lr * gamma
+            print(f"Learning rate updated to: {lr:.6f}")
 
 if __name__ == "__main__":
     train()
